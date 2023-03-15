@@ -2,6 +2,7 @@ export interface UserState {
   currentUser: User | null;
   isLoading: boolean;
   error: string | null;
+  isRegistered: boolean;
 }
 
 export interface User {

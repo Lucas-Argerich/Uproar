@@ -1,10 +1,11 @@
-import { UserActionTypes } from '../actions/types';
+import { SET_USER_REGISTERED, UserActionTypes } from '../actions/types';
 import { UserState } from '../types/userTypes';
 
 const initialUserState: UserState = {
   currentUser: null,
   isLoading: false,
   error: null,
+  isRegistered: true,
 };
 
 export const userReducer = (
@@ -44,6 +45,11 @@ export const userReducer = (
         ...state,
         isLoading: false,
         error: action.payload,
+      };
+    case SET_USER_REGISTERED:
+      return {
+        ...state,
+        isRegistered: action.payload,
       };
     default:
       return state;

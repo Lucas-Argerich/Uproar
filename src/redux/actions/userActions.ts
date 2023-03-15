@@ -5,6 +5,7 @@ import {
   LoadUserStartAction,
   LoadUserSuccessAction,
   LoadUserErrorAction,
+  SetUserRegisteredAction,
 } from './types';
 
 export const setCurrentUser = (user: User): SetCurrentUserAction => ({
@@ -29,4 +30,11 @@ export const loadUserSuccess = (user: User): LoadUserSuccessAction => ({
 export const loadUserError = (error: string): LoadUserErrorAction => ({
   type: 'LOAD_USER_ERROR',
   payload: error,
+});
+
+export const setUserRegistered = (
+  isRegistered: boolean
+): SetUserRegisteredAction => ({
+  type: 'SET_USER_REGISTERED',
+  payload: isRegistered,
 });
