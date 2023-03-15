@@ -5,6 +5,7 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const LOAD_USER_START = 'LOAD_USER_START';
 export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
 export const LOAD_USER_ERROR = 'LOAD_USER_ERROR';
+export const LOAD_USER_INTERRUPT = 'LOAD_USER_INTERRUPT'
 export const SET_USER_REGISTERED = 'SET_USER_REGISTERED';
 
 interface SetCurrentUserAction {
@@ -30,6 +31,10 @@ interface LoadUserErrorAction {
   payload: string;
 }
 
+interface LoadUserInterruptAction {
+  type: typeof LOAD_USER_INTERRUPT;
+}
+
 interface SetUserRegisteredAction {
   type: typeof SET_USER_REGISTERED;
   payload: boolean;
@@ -41,4 +46,5 @@ export type UserActionTypes =
   | LoadUserStartAction
   | LoadUserSuccessAction
   | LoadUserErrorAction
+  | LoadUserInterruptAction
   | SetUserRegisteredAction;

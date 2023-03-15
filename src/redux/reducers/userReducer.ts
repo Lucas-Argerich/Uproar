@@ -49,7 +49,13 @@ export const userReducer = (
     case 'SET_USER_REGISTERED':
       return {
         ...state,
+        isLoading: false,
         isRegistered: action.payload,
+      };
+    case 'LOAD_USER_INTERRUPT':
+      return {
+        ...state,
+        isLoading: false,
       };
     default:
       return state;

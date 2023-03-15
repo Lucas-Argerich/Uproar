@@ -6,6 +6,7 @@ import {
   LoadUserSuccessAction,
   LoadUserErrorAction,
   SetUserRegisteredAction,
+  LoadUserInterruptAction,
 } from './types';
 
 export const setCurrentUser = (user: User): SetCurrentUserAction => ({
@@ -25,6 +26,10 @@ export const loadUserStart = (): LoadUserStartAction => ({
 export const loadUserSuccess = (user: User): LoadUserSuccessAction => ({
   type: 'LOAD_USER_SUCCESS',
   payload: user,
+});
+
+export const loadUserInterrupt = (): LoadUserInterruptAction => ({
+  type: 'LOAD_USER_INTERRUPT',
 });
 
 export const loadUserError = (error: string): LoadUserErrorAction => ({
