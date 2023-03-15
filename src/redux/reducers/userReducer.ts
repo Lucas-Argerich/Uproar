@@ -1,4 +1,4 @@
-import { SET_USER_REGISTERED, UserActionTypes } from '../actions/types';
+import { UserActionTypes } from '../actions/types';
 import { UserState } from '../types/userTypes';
 
 const initialUserState: UserState = {
@@ -46,7 +46,7 @@ export const userReducer = (
         isLoading: false,
         error: action.payload,
       };
-    case SET_USER_REGISTERED:
+    case 'SET_USER_REGISTERED':
       return {
         ...state,
         isRegistered: action.payload,
