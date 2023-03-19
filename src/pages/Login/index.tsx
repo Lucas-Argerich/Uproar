@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import Button from '../../components/Button';
 import CancelLink from '../../components/CancelLink';
@@ -15,6 +14,7 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
   gap: 25px;
