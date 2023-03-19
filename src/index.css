@@ -1,9 +1,9 @@
 :root {
   --color-dark: #26223d;
-  --color-primary: #4d4077;
-  --color-secondary: #574786;
-  --color-tertiary: #614f96;
-  --color-quaternary: #6b57a4;
+  --color-primary: #6b57a4;
+  --color-secondary: #614f96;
+  --color-tertiary: #574786;
+  --color-quaternary: #4d4077;
   --color-light: #ebebeb;
   --color-yellow: #ffc107;
   --color-orange: #ff5722;
@@ -16,7 +16,7 @@ html, #root {
 }
 
 body {
-  background-image: linear-gradient(180deg, var(--color-dark) -50%, var(--color-primary) 100%);
+  background-image: linear-gradient(180deg, var(--color-dark) -50%, var(--color-quaternary) 100%);
   color: var(--color-light);
   height: 100%;
 }
