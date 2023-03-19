@@ -1,4 +1,4 @@
-interface Post {
+export interface Post {
   id: string;
   userId: string;
   content: string;
@@ -7,7 +7,7 @@ interface Post {
   comments: Comment[];
 }
 
-interface Comment extends Post {
+export interface Comment extends Post {
   rootPostId: string;
   replyTo?: string;
 }
