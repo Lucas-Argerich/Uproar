@@ -1,8 +1,10 @@
+import { UserInfo } from 'firebase/auth';
+
 export interface UserState {
+  auth: UserInfo | null;
   currentUser: User | null;
   isLoading: boolean;
   error: string | null;
-  isRegistered: boolean;
 }
 
 export interface User {

@@ -1,17 +1,17 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './components/Layout';
-import useAuth from './hooks/useAuth';
-import useFetchUserData from './hooks/useFetchUserData';
+import ManageAuth from './components/ManageAuth';
+import useHandleUserState from './hooks/useHandleUserState';
 import About from './pages/About';
 import Discovery from './pages/Discovery';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
+import Register from './pages/Register';
 
 function App() {
-  const currentUser = useAuth();
-  useFetchUserData(currentUser);
-
+  useHandleUserState();
   const routes = createBrowserRouter([
     {
       path: '/',

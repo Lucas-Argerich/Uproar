@@ -1,18 +1,29 @@
-import { useEffect, useState } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { useEffect } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/auth';
+import { useDispatch } from 'react-redux';
+import { loadUserInterrupt, setAuth } from '../redux/actions/userActions';
 
 export default function useAuth() {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState<Boolean>(true);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);
+      if (user) {
+        const { displayName, email, phoneNumber, photoURL, providerId, uid } =
+          user;
+        const userInfo = {
+          displayName,
+          email,
+          phoneNumber,
+          photoURL,
+          providerId,
+          uid,
+        };
+        dispatch(setAuth(userInfo));
+      } else {
+        dispatch(loadUserInterrupt());
+      }
     });
     return unsubscribe;
-  }, []);
-
-  return loading ? null : currentUser;
+  }, [dispatch]);
 }

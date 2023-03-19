@@ -1,12 +1,13 @@
+import { UserInfo } from 'firebase/auth';
 import { User } from '../types/userTypes';
 import {
   SetCurrentUserAction,
-  LogoutUserAction,
+  SetAuthAction,
   LoadUserStartAction,
   LoadUserSuccessAction,
   LoadUserErrorAction,
-  SetUserRegisteredAction,
   LoadUserInterruptAction,
+  LogoutUserAction,
 } from './types';
 
 export const setCurrentUser = (user: User): SetCurrentUserAction => ({
@@ -15,8 +16,9 @@ export const setCurrentUser = (user: User): SetCurrentUserAction => ({
   payload: user,
 });
 
-export const logoutUser = (): LogoutUserAction => ({
-  type: 'LOGOUT_USER',
+export const setAuth = (auth: UserInfo): SetAuthAction => ({
+  type: 'SET_AUTH',
+  payload: auth,
 });
 
 export const loadUserStart = (): LoadUserStartAction => ({
@@ -37,9 +39,6 @@ export const loadUserError = (error: string): LoadUserErrorAction => ({
   payload: error,
 });
 
-export const setUserRegistered = (
-  isRegistered: boolean
-): SetUserRegisteredAction => ({
-  type: 'SET_USER_REGISTERED',
-  payload: isRegistered,
+export const logoutUser = (): LogoutUserAction => ({
+  type: 'LOGOUT_USER',
 });

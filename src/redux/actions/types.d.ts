@@ -1,20 +1,22 @@
+import { UserInfo } from 'firebase/auth';
 import { User } from '../types/userTypes';
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
+export const SET_AUTH = 'SET_AUTH';
 export const LOAD_USER_START = 'LOAD_USER_START';
 export const LOAD_USER_SUCCESS = 'LOAD_USER_SUCCESS';
 export const LOAD_USER_ERROR = 'LOAD_USER_ERROR';
-export const LOAD_USER_INTERRUPT = 'LOAD_USER_INTERRUPT'
-export const SET_USER_REGISTERED = 'SET_USER_REGISTERED';
+export const LOAD_USER_INTERRUPT = 'LOAD_USER_INTERRUPT';
+export const LOGOUT_USER = 'LOGOUT_USER';
 
 interface SetCurrentUserAction {
   type: typeof SET_CURRENT_USER;
   payload: User;
 }
 
-interface LogoutUserAction {
-  type: typeof LOGOUT_USER;
+interface SetAuthAction {
+  type: typeof SET_AUTH;
+  payload: UserInfo;
 }
 
 interface LoadUserStartAction {
@@ -35,16 +37,15 @@ interface LoadUserInterruptAction {
   type: typeof LOAD_USER_INTERRUPT;
 }
 
-interface SetUserRegisteredAction {
-  type: typeof SET_USER_REGISTERED;
-  payload: boolean;
+interface LogoutUserAction {
+  type: typeof LOGOUT_USER;
 }
 
 export type UserActionTypes =
   | SetCurrentUserAction //Used only when you register an user, else use load.
-  | LogoutUserAction
+  | SetAuthAction
   | LoadUserStartAction
   | LoadUserSuccessAction
   | LoadUserErrorAction
   | LoadUserInterruptAction
-  | SetUserRegisteredAction;
+  | LogoutUserAction;

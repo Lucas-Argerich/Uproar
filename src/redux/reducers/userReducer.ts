@@ -2,10 +2,10 @@ import { UserActionTypes } from '../actions/types';
 import { UserState } from '../types/userTypes';
 
 const initialUserState: UserState = {
+  auth: null,
   currentUser: null,
-  isLoading: false,
   error: null,
-  isRegistered: true,
+  isLoading: false,
 };
 
 export const userReducer = (
@@ -20,12 +20,10 @@ export const userReducer = (
         isLoading: false,
         error: null,
       };
-    case 'LOGOUT_USER':
+    case 'SET_AUTH':
       return {
         ...state,
-        currentUser: null,
-        isLoading: false,
-        error: null,
+        auth: action.payload,
       };
     case 'LOAD_USER_START':
       return {
@@ -46,16 +44,17 @@ export const userReducer = (
         isLoading: false,
         error: action.payload,
       };
-    case 'SET_USER_REGISTERED':
-      return {
-        ...state,
-        isLoading: false,
-        isRegistered: action.payload,
-      };
     case 'LOAD_USER_INTERRUPT':
       return {
         ...state,
         isLoading: false,
+      };
+    case 'LOGOUT_USER':
+      return {
+        ...state,
+        currentUser: null,
+        isLoading: false,
+        error: null,
       };
     default:
       return state;
