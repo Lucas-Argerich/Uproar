@@ -24,7 +24,6 @@ export default function useHandleUserState() {
         if (auth) {
           const userRef = doc(db, 'users', auth.uid);
           const userSnap = await getDoc(userRef);
-
           if (userSnap.exists()) {
             dispatch(
               loadUserSuccess({
@@ -33,6 +32,7 @@ export default function useHandleUserState() {
               } as UserType)
             );
           } else {
+            dispatch(loadUserError('No user in db'));
           }
         }
       } catch (err) {
