@@ -12,6 +12,8 @@ import Register from './pages/Register';
 
 function App() {
   useHandleUserState();
+
+
   const routes = createBrowserRouter([
     {
       path: '/',
@@ -36,6 +38,19 @@ function App() {
         {
           path: 'profile',
           element: <Profile />,
+        },
+        {
+          element: <ManageAuth />,
+          children: [
+            {
+              path: 'login',
+              element: <Login />,
+            },
+            {
+              path: 'register',
+              element: <Register />,
+            },
+          ],
         },
       ],
     },
