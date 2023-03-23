@@ -1,20 +1,40 @@
-import { signOut } from 'firebase/auth';
 import styled from 'styled-components';
-import Button from '../../components/Button';
-import { auth } from '../../firebase/auth';
+import RegisterForm from '../../components/RegisterForm';
+import Logo from '../../utils/icons/Logo';
 
 const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 50px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 525px;
+  margin: auto;
+`;
+
+const Container = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
+`;
+
+const P = styled.p`
+  text-align: center;
 `;
 
 export default function Register() {
-  console.log(auth)
   return (
     <Wrapper>
-      <Button onClick={() => signOut(auth).then((i)=>console.log(i))}>Logout</Button>
+      <Container>
+        <Logo width={300} />
+        <P>Welcome to our community! We're excited to have you on board!</P>
+      </Container>
+      <RegisterForm />
+      <P>
+        Please fill out the registration form to complete your account setup and
+        start enjoying all the features and benefits our platform has to offer.
+      </P>
     </Wrapper>
-  )
+  );
 }

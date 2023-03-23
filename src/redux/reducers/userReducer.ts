@@ -51,10 +51,10 @@ export const userReducer = (
       };
     case 'LOGOUT_USER':
       return {
-        ...state,
+        auth: null,
         currentUser: null,
-        isLoading: false,
         error: null,
+        isLoading: false,
       };
     default:
       return state;

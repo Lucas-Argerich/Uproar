@@ -5,6 +5,9 @@
   --color-tertiary: #574786;
   --color-quaternary: #4d4077;
   --color-light: #ebebeb;
+  --color-light-75: #ebebebBF;
+  --color-light-50: #ebebeb7F;
+  --color-light-25: #ebebeb3F;
   --color-yellow: #ffc107;
   --color-orange: #ff5722;
   --color-green: #00796b;
@@ -22,6 +25,7 @@ body {
 }
 
 * {
+  box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   margin: 0;
 }

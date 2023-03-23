@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 import styled, { css } from 'styled-components';
 
 interface IButton {
   children: ReactNode | string;
-  onClick: () => void;
+  onClick: (e:MouseEvent) => void;
   secondary?: boolean;
 };
 
@@ -21,8 +21,8 @@ const StyledButton = styled.button<{ secondary?: boolean }>`
     !secondary
     ? css`
            {
-            background-color: var(--color-tertiary);
-            border-radius: 30px;
+            background-color: var(--color-primary);
+            border-radius: 5px;
             font-size: 0.875rem;
             font-weight: 400;
             padding: 10px 20px;
@@ -33,13 +33,14 @@ const StyledButton = styled.button<{ secondary?: boolean }>`
             background-color: transparent;
             font-size: 0.75rem;
             font-weight: 300;
+            text-decoration: underline;
           }
         `}
 `;
 
 export default function Button({ children, onClick, secondary }: IButton) {
   return (
-    <StyledButton secondary={secondary} onClick={onClick}>
+    <StyledButton secondary={secondary} onClick={(e) => onClick(e)}>
       {children}
     </StyledButton>
   );
