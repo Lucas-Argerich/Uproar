@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 interface IButton {
   children: ReactNode | string;
+  disabled?: boolean;
   onClick: (e:MouseEvent) => void;
   secondary?: boolean;
 };
@@ -38,9 +39,9 @@ const StyledButton = styled.button<{ secondary?: boolean }>`
         `}
 `;
 
-export default function Button({ children, onClick, secondary }: IButton) {
+export default function Button({ children, disabled, onClick, secondary }: IButton) {
   return (
-    <StyledButton secondary={secondary} onClick={(e) => onClick(e)}>
+    <StyledButton disabled={disabled} secondary={secondary} onClick={(e) => onClick(e)}>
       {children}
     </StyledButton>
   );
