@@ -1,6 +1,8 @@
+import { ChangeEvent } from 'react'
 import styled from 'styled-components';
 
 interface IFormInput {
+  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   name: string;
   placeholder?: string;
   type: string;
@@ -39,6 +41,7 @@ const Input = styled.input`
 `;
 
 export default function FormInput({
+  handleChange,
   name,
   placeholder,
   type,
@@ -48,6 +51,7 @@ export default function FormInput({
     <Wrapper>
       <Span>{name}</Span>
       <Input
+        onChange={handleChange}
         disabled={Boolean(value)}
         name={name}
         placeholder={placeholder}
