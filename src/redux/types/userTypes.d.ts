@@ -3,18 +3,24 @@ import { UserInfo } from 'firebase/auth';
 export interface UserState {
   auth: UserInfo | null;
   currentUser: User | null;
-  isLoading: boolean;
   error: string | null;
+  isLoading: boolean;
 }
 
 export interface User {
   id: string;
-  email: string;
-  displayName: string;
-  photoURL: string;
-  username: string;
+  data: User;
+}
+
+export interface UserData {
   banner: string;
+  createdAt: number;
   description: string;
-  posts: string[];
+  displayName: string;
+  email: string;
   liked: string[];
+  photoURL: string;
+  posts: string[];
+  uid: string;
+  username: string;
 }
