@@ -1,11 +1,11 @@
-import { KeyboardEvent } from 'react';
-import { useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 interface IFormTextArea {
+  maxChars?: number;
   name: string;
+  onTextChange: (str: string) => void;
   placeholder?: string;
-  maxChar?: number;
 }
 
 const Wrapper = styled.div`
@@ -19,7 +19,7 @@ const Span = styled.span`
   font-size: 0.875rem;
 `;
 
-const TextArea = styled.p`
+const TextArea = styled.textarea`
   background-color: var(--color-primary);
   border-radius: 20px;
   border: none;
@@ -37,20 +37,45 @@ const TextArea = styled.p`
   &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const CharsLeft = styled.span`
+    font-size: 0.75rem;
+    margin-left: auto;
 `
 
-export default function FormTextArea({name, placeholder}: IFormTextArea) {
-  const [value, setValue] = useState("")
+export default function FormTextArea({
+  maxChars,
+  name,
+  onTextChange,
+  placeholder,
+}: IFormTextArea) {
+  const [text, setText] = useState('');
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleChange = (e:KeyboardEvent) => {
-    console.log(e.currentTarget.innerHTML)
-    setValue(e.currentTarget.innerHTML)
-  }
+  const handleInput = () => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = 'auto';
+      textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+    }
+  };
+
+  const _handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setText(e.target.value);
+    onTextChange(e.target.value);
+  };
 
   return (
     <Wrapper>
       <Span>{name}</Span>
-      <TextArea contentEditable placeholder={placeholder} onKeyDown={e => handleChange(e)}></TextArea>
+      <TextArea
+        maxLength={maxChars}
+        onChange={_handleChange}
+        onInput={handleInput}
+        placeholder={placeholder}
+        ref={textAreaRef}
+      ></TextArea>
+      {maxChars && <CharsLeft>{maxChars - text.length} characters left.</CharsLeft>}
     </Wrapper>
-  )
+  );
 }
