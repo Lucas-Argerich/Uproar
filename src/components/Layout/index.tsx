@@ -9,6 +9,7 @@ import {
   selectCurrentUser,
   selectIsLoading,
 } from '../../redux/selectors/userSelectors';
+import ProfileCard from '../ProfileCard';
 
 const Container = styled.div`
   display: flex;
@@ -79,7 +80,7 @@ export default function Layout() {
         <Main>
           <Outlet />
         </Main>
-        <RightSection></RightSection>
+        <RightSection>{!showSideContent && <ProfileCard />}</RightSection>
       </Wrapper>
     </Container>
   );
