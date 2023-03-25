@@ -19,6 +19,7 @@ const Nav = styled.nav`
   width: 100%;
 
   @media only screen and (min-width: 768px) {
+    bottom: 0;
     flex-direction: column;
     width: auto;
     position: relative;
