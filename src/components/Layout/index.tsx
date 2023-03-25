@@ -18,9 +18,21 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 0 100px;
   flex-grow: 1;
+  justify-content: space-between;
+  padding-inline: 20px;
+
+  @media only screen and (min-width: 600px) {
+    padding-inline: 40px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding-inline: 60px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    padding-inline: 100px;
+  }
 `;
 
 const LeftSection = styled.section`
