@@ -15,7 +15,7 @@ import {
   loadUserSuccess,
 } from '../redux/actions/userActions';
 import { selectAuth } from '../redux/selectors/userSelectors';
-import { User } from '../redux/types/userTypes';
+import { User, UserData } from '../redux/types/userTypes';
 import useAuth from './useAuth';
 
 export default function useHandleUserState() {
@@ -32,7 +32,7 @@ export default function useHandleUserState() {
         if (!querySnapshot.empty) {
           dispatch(
             loadUserSuccess({
-              ...(querySnapshot.docs[0].data() as User),
+              data: querySnapshot.docs[0].data() as UserData,
               id: querySnapshot.docs[0].id,
             })
           );

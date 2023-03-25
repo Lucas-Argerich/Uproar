@@ -9,7 +9,7 @@ export interface UserState {
 
 export interface User {
   id: string;
-  data: User;
+  data: UserData;
 }
 
 export interface UserData {
