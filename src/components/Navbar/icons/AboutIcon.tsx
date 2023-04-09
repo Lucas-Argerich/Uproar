@@ -1,7 +1,8 @@
-import { IconType } from '../../../utils/types';
+import { type IconType } from '../../../utils/types'
 
-export default function AboutIcon(props: IconType) {
-  return props.isSelected ? (
+export default function AboutIcon (props: IconType) {
+  return props.isSelected
+    ? (
     <svg
     width={32}
     height={33}
@@ -14,7 +15,8 @@ export default function AboutIcon(props: IconType) {
       fill="var(--color-light)"
     />
   </svg>
-  ) : (
+      )
+    : (
     <svg
     width={32}
     height={33}
@@ -31,5 +33,5 @@ export default function AboutIcon(props: IconType) {
       strokeLinejoin="round"
     />
   </svg>
-  );
+      )
 }

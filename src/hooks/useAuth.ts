@@ -1,30 +1,30 @@
-import { useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/auth';
-import { useDispatch } from 'react-redux';
-import { loadUserInterrupt, loadUserStart, setAuth } from '../redux/actions/userActions';
+import { useEffect } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../firebase/auth'
+import { useDispatch } from 'react-redux'
+import { loadUserInterrupt, loadUserStart, setAuth } from '../redux/actions/userActions'
 
-export default function useAuth() {
-  const dispatch = useDispatch();
+export default function useAuth () {
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(loadUserStart());
+    dispatch(loadUserStart())
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user != null) {
         const { displayName, email, phoneNumber, photoURL, providerId, uid } =
-          user;
+          user
         const userInfo = {
           displayName,
           email,
           phoneNumber,
           photoURL,
           providerId,
-          uid,
-        };
-        dispatch(setAuth(userInfo));
+          uid
+        }
+        dispatch(setAuth(userInfo))
       } else {
-        dispatch(loadUserInterrupt());
+        dispatch(loadUserInterrupt())
       }
-    });
-    return unsubscribe;
-  }, [dispatch]);
+    })
+    return unsubscribe
+  }, [dispatch])
 }

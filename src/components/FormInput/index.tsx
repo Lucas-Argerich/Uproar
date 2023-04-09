@@ -1,12 +1,12 @@
-import { ChangeEvent } from 'react'
-import styled from 'styled-components';
+import { type ChangeEvent } from 'react'
+import styled from 'styled-components'
 
 interface IFormInput {
-  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  name: string;
-  placeholder?: string;
-  type: string;
-  value?: string;
+  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  name: string
+  placeholder?: string
+  type: string
+  value?: string
 }
 
 const Wrapper = styled.div`
@@ -14,11 +14,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 5px;
   width: 100%;
-`;
+`
 
 const Span = styled.span`
   font-size: 0.875rem;
-`;
+`
 
 const Input = styled.input`
   background-color: var(--color-primary);
@@ -38,14 +38,14 @@ const Input = styled.input`
     background-color: var(--color-tertiary);
     color: var(--color-light-50);
   }
-`;
+`
 
-export default function FormInput({
+export default function FormInput ({
   handleChange,
   name,
   placeholder,
   type,
-  value,
+  value
 }: IFormInput) {
   return (
     <Wrapper>
@@ -59,5 +59,5 @@ export default function FormInput({
         value={value}
       />
     </Wrapper>
-  );
+  )
 }

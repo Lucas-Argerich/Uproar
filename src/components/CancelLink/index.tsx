@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import ArrowLeft from './Icons/ArrowLeft';
+import { type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import ArrowLeft from './Icons/ArrowLeft'
 
 interface ICancelLink {
-  to: string;
-  children?: ReactNode;
+  to: string
+  children?: ReactNode
 }
 
 const StyledLink = styled(Link)`
@@ -16,13 +16,13 @@ const StyledLink = styled(Link)`
   padding: 10px;
   text-decoration: none;
   width: 100%;
-`;
+`
 
-export default function CancelLink({ to, children }: ICancelLink) {
+export default function CancelLink ({ to, children }: ICancelLink) {
   return (
     <StyledLink to={to}>
       <ArrowLeft />
       {children}
     </StyledLink>
-  );
+  )
 }

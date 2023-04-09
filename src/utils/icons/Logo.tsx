@@ -1,10 +1,10 @@
-import { SVGProps } from 'react';
+import { type SVGProps } from 'react'
 
-export default function Logo(props: SVGProps<SVGSVGElement>) {
+export default function Logo (props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={234}
-      viewBox={"0 0 234 56"}
+      viewBox={'0 0 234 56'}
       preserveAspectRatio="xMidYMid meet"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -19,5 +19,5 @@ export default function Logo(props: SVGProps<SVGSVGElement>) {
         </clipPath>
       </defs>
     </svg>
-  );
+  )
 }

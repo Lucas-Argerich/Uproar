@@ -1,6 +1,7 @@
-import { IconType } from '../../../utils/types';
-export default function NotificationIcon(props: IconType) {
-  return props.isSelected ? (
+import { type IconType } from '../../../utils/types'
+export default function NotificationIcon (props: IconType) {
+  return props.isSelected
+    ? (
     <svg
       width={32}
       height={33}
@@ -13,7 +14,8 @@ export default function NotificationIcon(props: IconType) {
         fill="var(--color-light)"
       />
     </svg>
-  ) : (
+      )
+    : (
     <svg
       width={32}
       height={33}
@@ -43,5 +45,5 @@ export default function NotificationIcon(props: IconType) {
         strokeMiterlimit={10}
       />
     </svg>
-  );
+      )
 }

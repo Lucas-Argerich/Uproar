@@ -1,10 +1,10 @@
-import { signOut } from 'firebase/auth';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { auth } from '../../firebase/auth';
-import { logoutUser } from '../../redux/actions/userActions';
-import { selectCurrentUser } from '../../redux/selectors/userSelectors';
+import { signOut } from 'firebase/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { auth } from '../../firebase/auth'
+import { logoutUser } from '../../redux/actions/userActions'
+import { selectCurrentUser } from '../../redux/selectors/userSelectors'
 
 const Container = styled.div`
   align-items: flex-end;
@@ -16,7 +16,7 @@ const Container = styled.div`
   margin-top: 50px;
   padding: 20px 40px;
   max-width: 260px;
-`;
+`
 
 const ProfileNameWrapper = styled.div`
   align-items: flex-end;
@@ -24,7 +24,7 @@ const ProfileNameWrapper = styled.div`
   flex-direction: column;
   gap: 2px;
   width: 100%;
-`;
+`
 
 const Picture = styled.div`
   background-color: var(--color-primary);
@@ -32,7 +32,7 @@ const Picture = styled.div`
   height: 100px;
   width: 100px;
   background-position: center center;
-`;
+`
 
 const Name = styled.h4`
   font-size: 1.5rem;
@@ -42,7 +42,7 @@ const Name = styled.h4`
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
-`;
+`
 
 const Username = styled.h5`
   font-size: 1.25rem;
@@ -52,14 +52,14 @@ const Username = styled.h5`
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
-`;
+`
 
 const StyledLink = styled(Link)`
   color: var(--color-light);
   font-size: 1.25rem;
   font-weight: 600;
   text-decoration: none;
-`;
+`
 
 const StyledButton = styled.button`
   background-color: transparent;
@@ -70,16 +70,16 @@ const StyledButton = styled.button`
   font-weight: 600;
   outline: none;
   padding: 0;
-`;
+`
 
-export default function ProfileCard() {
-  const userData = useSelector(selectCurrentUser);
-  const dispatch = useDispatch();
+export default function ProfileCard () {
+  const userData = useSelector(selectCurrentUser)
+  const dispatch = useDispatch()
 
   const handleClick = () => {
-    signOut(auth);
-    dispatch(logoutUser());
-  };
+    signOut(auth)
+    dispatch(logoutUser())
+  }
 
   return (
     <Container>
@@ -91,12 +91,12 @@ export default function ProfileCard() {
               : {}
           }
         />
-        <Name>{userData ? userData?.data.displayName : 'DisplayName'}</Name>
-        <Username>@{userData ? userData?.data.username : 'username'}</Username>
+        <Name>{(userData != null) ? userData?.data.displayName : 'DisplayName'}</Name>
+        <Username>@{(userData != null) ? userData?.data.username : 'username'}</Username>
       </ProfileNameWrapper>
       <StyledLink to="settings">Settings</StyledLink>
       <StyledLink to="profile">Profile</StyledLink>
       <StyledButton onClick={handleClick}>Log out</StyledButton>
     </Container>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import { SVGProps } from "react"
+import { type SVGProps } from 'react'
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={16}
-    viewBox={"0 0 16 18"}
+    viewBox={'0 0 16 18'}
     preserveAspectRatio="xMidYMid meet"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

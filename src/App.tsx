@@ -1,18 +1,17 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from './components/Layout';
-import ManageAuth from './components/ManageAuth';
-import useHandleUserState from './hooks/useHandleUserState';
-import About from './pages/About';
-import Discovery from './pages/Discovery';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Notifications from './pages/Notifications';
-import Profile from './pages/Profile';
-import Register from './pages/Register';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Layout from './components/Layout'
+import ManageAuth from './components/ManageAuth'
+import useHandleUserState from './hooks/useHandleUserState'
+import About from './pages/About'
+import Discovery from './pages/Discovery'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Notifications from './pages/Notifications'
+import Profile from './pages/Profile'
+import Register from './pages/Register'
 
-function App() {
-  useHandleUserState();
-
+function App () {
+  useHandleUserState()
 
   const routes = createBrowserRouter([
     {
@@ -21,42 +20,42 @@ function App() {
       children: [
         {
           path: 'home',
-          element: <Home />,
+          element: <Home />
         },
         {
           path: 'discovery',
-          element: <Discovery />,
+          element: <Discovery />
         },
         {
           path: 'notifications',
-          element: <Notifications />,
+          element: <Notifications />
         },
         {
           path: 'about',
-          element: <About />,
+          element: <About />
         },
         {
           path: 'profile',
-          element: <Profile />,
+          element: <Profile />
         },
         {
           element: <ManageAuth />,
           children: [
             {
               path: 'login',
-              element: <Login />,
+              element: <Login />
             },
             {
               path: 'register',
-              element: <Register />,
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+              element: <Register />
+            }
+          ]
+        }
+      ]
+    }
+  ])
 
-  return <RouterProvider router={routes} />;
+  return <RouterProvider router={routes} />
 }
 
-export default App;
+export default App

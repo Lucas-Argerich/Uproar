@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import useMediaQuery from '../../hooks/useMediaQuery';
-import AboutIcon from './icons/AboutIcon';
-import DiscoveryIcon from './icons/DiscoveryIcon';
-import HomeIcon from './icons/HomeIcon';
-import NotificationIcon from './icons/NotificationIcon';
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
+import useMediaQuery from '../../hooks/useMediaQuery'
+import AboutIcon from './icons/AboutIcon'
+import DiscoveryIcon from './icons/DiscoveryIcon'
+import HomeIcon from './icons/HomeIcon'
+import NotificationIcon from './icons/NotificationIcon'
 
 const Nav = styled.nav`
   bottom: 20px;
@@ -24,7 +24,7 @@ const Nav = styled.nav`
     width: auto;
     position: relative;
   }
-`;
+`
 
 const StyledNavLink = styled(NavLink)`
   align-items: center;
@@ -32,10 +32,10 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   gap: 10px;
   text-decoration: none;
-`;
+`
 
-export default function Navbar() {
-  const mediaQuery768 = useMediaQuery('(min-width: 768px)');
+export default function Navbar () {
+  const mediaQuery768 = useMediaQuery('(min-width: 768px)')
   return (
     <Nav>
       <StyledNavLink to="home">
@@ -83,5 +83,5 @@ export default function Navbar() {
         )}
       </StyledNavLink>
     </Nav>
-  );
+  )
 }

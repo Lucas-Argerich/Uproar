@@ -1,11 +1,11 @@
-import { ReactNode, MouseEvent } from 'react';
-import styled, { css } from 'styled-components';
+import { type ReactNode, type MouseEvent } from 'react'
+import styled, { css } from 'styled-components'
 
 interface IButton {
-  children: ReactNode | string;
-  disabled?: boolean;
-  onClick: (e:MouseEvent) => void;
-  secondary?: boolean;
+  children: ReactNode | string
+  disabled?: boolean
+  onClick: (e: MouseEvent) => void
+  secondary?: boolean
 };
 
 const StyledButton = styled.button<{ secondary?: boolean }>`
@@ -37,12 +37,12 @@ const StyledButton = styled.button<{ secondary?: boolean }>`
             text-decoration: underline;
           }
         `}
-`;
+`
 
-export default function Button({ children, disabled, onClick, secondary }: IButton) {
+export default function Button ({ children, disabled, onClick, secondary }: IButton) {
   return (
-    <StyledButton disabled={disabled} secondary={secondary} onClick={(e) => onClick(e)}>
+    <StyledButton disabled={disabled} secondary={secondary} onClick={(e) => { onClick(e) }}>
       {children}
     </StyledButton>
-  );
+  )
 }

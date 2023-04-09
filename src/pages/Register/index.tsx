@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import RegisterForm from '../../components/RegisterForm';
-import Logo from '../../utils/icons/Logo';
+import styled from 'styled-components'
+import RegisterForm from '../../components/RegisterForm'
+import Logo from '../../utils/icons/Logo'
 
 const Wrapper = styled.div`
   align-items: center;
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   gap: 50px;
   max-width: 525px;
   margin: auto;
-`;
+`
 
 const Container = styled.div`
   align-items: center;
@@ -17,13 +17,13 @@ const Container = styled.div`
   flex-direction: column;
   gap: 25px;
   margin-top: 50px;
-`;
+`
 
 const P = styled.p`
   text-align: center;
-`;
+`
 
-export default function Register() {
+export default function Register () {
   return (
     <Wrapper>
       <Container>
@@ -36,5 +36,5 @@ export default function Register() {
         start enjoying all the features and benefits our platform has to offer.
       </P>
     </Wrapper>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import { ChangeEvent, useRef, useState } from 'react';
-import styled from 'styled-components';
+import { type ChangeEvent, useRef, useState } from 'react'
+import styled from 'styled-components'
 
 interface IFormTextArea {
-  maxChars?: number;
-  name: string;
-  onTextChange: (str: string) => void;
-  placeholder?: string;
+  maxChars?: number
+  name: string
+  onTextChange: (str: string) => void
+  placeholder?: string
 }
 
 const Wrapper = styled.div`
@@ -13,11 +13,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 5px;
   width: 100%;
-`;
+`
 
 const Span = styled.span`
   font-size: 0.875rem;
-`;
+`
 
 const TextArea = styled.textarea`
   background-color: var(--color-primary);
@@ -37,33 +37,33 @@ const TextArea = styled.textarea`
   &::-webkit-scrollbar {
     display: none;
   }
-`;
+`
 
 const CharsLeft = styled.span`
     font-size: 0.75rem;
     margin-left: auto;
 `
 
-export default function FormTextArea({
+export default function FormTextArea ({
   maxChars,
   name,
   onTextChange,
-  placeholder,
+  placeholder
 }: IFormTextArea) {
-  const [text, setText] = useState('');
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const [text, setText] = useState('')
+  const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleInput = () => {
-    if (textAreaRef.current) {
-      textAreaRef.current.style.height = 'auto';
-      textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+    if (textAreaRef.current != null) {
+      textAreaRef.current.style.height = 'auto'
+      textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`
     }
-  };
+  }
 
   const _handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
-    onTextChange(e.target.value);
-  };
+    setText(e.target.value)
+    onTextChange(e.target.value)
+  }
 
   return (
     <Wrapper>
@@ -77,5 +77,5 @@ export default function FormTextArea({
       ></TextArea>
       {maxChars && <CharsLeft>{maxChars - text.length} characters left.</CharsLeft>}
     </Wrapper>
-  );
+  )
 }
