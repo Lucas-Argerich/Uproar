@@ -18,16 +18,17 @@ const Wrapper = styled.div`
 
 const Span = styled.span`
   font-size: 0.875rem;
+  padding-left: 12px;
 `
 
 const Input = styled.input`
-  background-color: var(--color-primary);
-  border-radius: 30px;
-  border: none;
+  background-color: var(--color-quaternary);
+  border-radius: 5px;
+  border: 2px solid var(--color-primary);
   color: var(--color-light);
   font-size: 1rem;
   outline: none;
-  padding: 10px 10px 10px 20px;
+  padding: 10px;
   width: inherit;
 
   &::placeholder {
@@ -35,7 +36,7 @@ const Input = styled.input`
   }
 
   &:disabled {
-    background-color: var(--color-tertiary);
+    background-color: var(--color-primary);
     color: var(--color-light-50);
   }
 `

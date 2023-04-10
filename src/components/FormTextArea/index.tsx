@@ -17,16 +17,17 @@ const Wrapper = styled.div`
 
 const Span = styled.span`
   font-size: 0.875rem;
+  padding-left: 12px;
 `
 
 const TextArea = styled.textarea`
-  background-color: var(--color-primary);
-  border-radius: 20px;
-  border: none;
+  background-color: var(--color-quaternary);
+  border-radius: 5px;
+  border: 2px solid var(--color-primary);
   color: var(--color-light);
   outline: none;
   width: 100%;
-  padding: 10px 10px 10px 20px;
+  padding: 10px;
   resize: none;
   min-height: 60px;
 
