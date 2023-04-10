@@ -19,7 +19,7 @@ const StyledButton = styled.button<{ secondary?: boolean }>`
   width: 100%;
 
   ${({ secondary }) =>
-    secondary === false
+    secondary !== true
       ? css`
            {
             background-color: var(--color-primary);
