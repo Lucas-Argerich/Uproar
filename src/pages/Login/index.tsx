@@ -26,10 +26,10 @@ const ButtonContainer = styled.div`
   gap: 20px;
 `
 
-export default function Login () {
+export default function Login(): JSX.Element {
   const navigate = useNavigate()
 
-  const handleLogin = async () => {
+  const handleLogin = async (): Promise<void> => {
     await loginWithGoogle()
     navigate('/home')
   }
@@ -42,11 +42,16 @@ export default function Login () {
         <p>Join us now and become a part of our community!</p>
       </Container>
       <ButtonContainer>
-        <Button onClick={handleLogin}>
+        <Button onClick={() => handleLogin}>
           <GoogleLogo />
           Login with Google
         </Button>
-        <Button secondary onClick={() => { navigate('/home') }}>
+        <Button
+          secondary
+          onClick={() => {
+            navigate('/home')
+          }}
+        >
           Continue without account
         </Button>
       </ButtonContainer>

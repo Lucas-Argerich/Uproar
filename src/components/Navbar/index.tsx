@@ -34,7 +34,7 @@ const StyledNavLink = styled(NavLink)`
   text-decoration: none;
 `
 
-export default function Navbar () {
+export default function Navbar(): JSX.Element {
   const mediaQuery768 = useMediaQuery('(min-width: 768px)')
   return (
     <Nav>

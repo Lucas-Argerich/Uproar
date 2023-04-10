@@ -18,7 +18,7 @@ import { selectAuth } from '../redux/selectors/userSelectors'
 import { type UserData } from '../redux/types/userTypes'
 import useAuth from './useAuth'
 
-export default function useHandleUserState () {
+export default function useHandleUserState(): void {
   const dispatch = useDispatch()
   useAuth()
   const auth = useSelector(selectAuth)
@@ -26,7 +26,10 @@ export default function useHandleUserState () {
   useEffect(() => {
     if (auth == null) return
     dispatch(loadUserStart())
-    const q = query(collection(db, 'users'), where('uid', '==', auth ? auth.uid : ''))
+    const q = query(
+      collection(db, 'users'),
+      where('uid', '==', auth !== null ? auth.uid : '')
+    )
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       try {
         if (!querySnapshot.empty) {

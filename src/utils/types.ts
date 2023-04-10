@@ -1,5 +1,5 @@
 import { type SVGProps } from 'react'
 
-export interface IconType extends SVGProps<SVGSVGElement> {
-  isSelected?: boolean
+export interface NavIconType extends SVGProps<SVGSVGElement> {
+  isSelected: boolean
 }

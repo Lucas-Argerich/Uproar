@@ -23,12 +23,14 @@ const P = styled.p`
   text-align: center;
 `
 
-export default function Register () {
+export default function Register(): JSX.Element {
   return (
     <Wrapper>
       <Container>
         <Logo width={300} />
-        <P>Welcome to our community! We're excited to have you on board!</P>
+        <P>
+          Welcome to our community! We&apos;re excited to have you on board!
+        </P>
       </Container>
       <RegisterForm />
       <P>

@@ -40,27 +40,27 @@ const TextArea = styled.textarea`
 `
 
 const CharsLeft = styled.span`
-    font-size: 0.75rem;
-    margin-left: auto;
+  font-size: 0.75rem;
+  margin-left: auto;
 `
 
-export default function FormTextArea ({
+export default function FormTextArea({
   maxChars,
   name,
   onTextChange,
   placeholder
-}: IFormTextArea) {
+}: IFormTextArea): JSX.Element {
   const [text, setText] = useState('')
   const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
-  const handleInput = () => {
+  const handleInput = (): void => {
     if (textAreaRef.current != null) {
       textAreaRef.current.style.height = 'auto'
       textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`
     }
   }
 
-  const _handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const _handleChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
     setText(e.target.value)
     onTextChange(e.target.value)
   }
@@ -75,7 +75,9 @@ export default function FormTextArea ({
         placeholder={placeholder}
         ref={textAreaRef}
       ></TextArea>
-      {maxChars && <CharsLeft>{maxChars - text.length} characters left.</CharsLeft>}
+      {maxChars !== undefined && (
+        <CharsLeft>{maxChars - text.length} characters left.</CharsLeft>
+      )}
     </Wrapper>
   )
 }

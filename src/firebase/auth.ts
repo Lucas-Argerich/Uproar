@@ -3,7 +3,7 @@ import { app } from './app'
 
 export const auth = getAuth(app)
 
-export const loginWithGoogle = async () => {
+export const loginWithGoogle = async (): Promise<any> => {
   const provider = new GoogleAuthProvider()
   await signInWithPopup(auth, provider)
     .then((result) => {

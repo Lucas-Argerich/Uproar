@@ -1,5 +1,11 @@
-import { getAuth, signOut } from 'firebase/auth'
-import { addDoc, collection, onSnapshot, query, where } from 'firebase/firestore'
+import { signOut } from 'firebase/auth'
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  where
+} from 'firebase/firestore'
 import { type MouseEvent, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -10,6 +16,7 @@ import { selectAuth } from '../../redux/selectors/userSelectors'
 import Button from '../Button'
 import FormInput from '../FormInput'
 import FormTextArea from '../FormTextArea'
+import { auth } from '../../firebase/auth'
 
 const Form = styled.form`
   align-items: center;
@@ -31,18 +38,15 @@ const ButtonContainer = styled.div`
   width: 100%;
 `
 
-export default function RegisterForm () {
+export default function RegisterForm(): JSX.Element {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const auth = getAuth()
   const authData = useSelector(selectAuth)
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [isUsernameAllowed, setIsUsernameAllowed] = useState(false)
-  const email = authData?.email
-  const photoURL = authData?.photoURL
-  const uid = authData?.uid
+  const { email, photoURL, uid } = authData ?? {}
 
   useEffect(() => {
     const q = query(collection(db, 'users'), where('username', '==', username))
@@ -55,14 +59,14 @@ export default function RegisterForm () {
     }
   }, [username])
 
-  const handleCancel = async (e: MouseEvent) => {
+  const handleCancel = (e: MouseEvent) => async (): Promise<void> => {
     e.preventDefault()
     await signOut(auth)
     dispatch(logoutUser())
     navigate('/home')
   }
 
-  const handleRegister = async (e: MouseEvent) => {
+  const handleRegister = (e: MouseEvent) => async (): Promise<void> => {
     e.preventDefault()
     if (!isUsernameAllowed) throw Error('Username not available.')
     const timestamp = new Date()
@@ -85,19 +89,23 @@ export default function RegisterForm () {
     <Form>
       <NameUsernameContainer>
         <FormInput
-          handleChange={(e) => { setUsername(e.target.value) }}
+          handleChange={(e) => {
+            setUsername(e.target.value)
+          }}
           name="Username"
           placeholder="@username"
           type="text"
         />
         <FormInput
-          handleChange={(e) => { setName(e.target.value) }}
+          handleChange={(e) => {
+            setName(e.target.value)
+          }}
           name="Name"
           placeholder="Name Surname"
           type="text"
         />
       </NameUsernameContainer>
-      <FormInput name="Email" value={email || ''} type="text" />
+      <FormInput name="Email" value={email ?? ''} type="text" />
       <FormTextArea
         name="Description"
         placeholder="Tell us something about yourself!"
@@ -105,10 +113,15 @@ export default function RegisterForm () {
         maxChars={120}
       />
       <ButtonContainer>
-        <Button secondary onClick={async (e) => { await handleCancel(e) }}>
+        <Button secondary onClick={(e) => handleCancel(e)}>
           Cancel
         </Button>
-        <Button disabled={!isUsernameAllowed} onClick={async (e) => { await handleRegister(e) }}>Register</Button>
+        <Button
+          disabled={!isUsernameAllowed}
+          onClick={(e) => handleRegister(e)}
+        >
+          Register
+        </Button>
       </ButtonContainer>
     </Form>
   )

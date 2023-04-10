@@ -5,27 +5,32 @@
   --color-tertiary: #574786;
   --color-quaternary: #4d4077;
   --color-light: #ebebeb;
-  --color-light-75: #ebebebBF;
-  --color-light-50: #ebebeb7F;
-  --color-light-25: #ebebeb3F;
+  --color-light-75: #ebebebbf;
+  --color-light-50: #ebebeb7f;
+  --color-light-25: #ebebeb3f;
   --color-yellow: #ffc107;
   --color-orange: #ff5722;
   --color-green: #00796b;
-  --color-red: #c62828
+  --color-red: #c62828;
 }
 
-html, #root {
+html,
+#root {
   min-height: 100%;
 }
 
 body {
-  background-image: linear-gradient(180deg, var(--color-dark) -50%, var(--color-quaternary) 100%);
+  background-image: linear-gradient(
+    180deg,
+    var(--color-dark) -50%,
+    var(--color-quaternary) 100%
+  );
   color: var(--color-light);
   height: 100%;
 }
 
 * {
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
 }

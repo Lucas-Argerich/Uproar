@@ -7,7 +7,7 @@ import {
   selectIsLoading
 } from '../../redux/selectors/userSelectors'
 
-export default function ManageAuth () {
+export default function ManageAuth(): JSX.Element {
   const navigate = useNavigate()
 
   const user = useSelector(selectCurrentUser)

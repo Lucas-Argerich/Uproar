@@ -54,7 +54,7 @@ const RightSection = styled.section`
   flex-grow: 1;
 `
 
-export default function Layout () {
+export default function Layout(): JSX.Element {
   const navigate = useNavigate()
 
   const isLoginPage = Boolean(useMatch('login'))
@@ -67,7 +67,7 @@ export default function Layout () {
   const isUserLoading = useSelector(selectIsLoading)
 
   useEffect(() => {
-    if (!isUserLoading && (userAuth != null) && (userData == null)) {
+    if (!isUserLoading && userAuth != null && userData == null) {
       navigate('/register')
     }
   }, [navigate, userAuth, userData, isUserLoading])

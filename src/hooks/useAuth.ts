@@ -2,9 +2,13 @@ import { useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase/auth'
 import { useDispatch } from 'react-redux'
-import { loadUserInterrupt, loadUserStart, setAuth } from '../redux/actions/userActions'
+import {
+  loadUserInterrupt,
+  loadUserStart,
+  setAuth
+} from '../redux/actions/userActions'
 
-export default function useAuth () {
+export default function useAuth(): void {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(loadUserStart())

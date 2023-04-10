@@ -10,7 +10,7 @@ import Notifications from './pages/Notifications'
 import Profile from './pages/Profile'
 import Register from './pages/Register'
 
-function App () {
+function App(): JSX.Element {
   useHandleUserState()
 
   const routes = createBrowserRouter([

@@ -72,12 +72,12 @@ const StyledButton = styled.button`
   padding: 0;
 `
 
-export default function ProfileCard () {
+export default function ProfileCard(): JSX.Element {
   const userData = useSelector(selectCurrentUser)
   const dispatch = useDispatch()
 
-  const handleClick = () => {
-    signOut(auth)
+  const handleClick = async (): Promise<void> => {
+    await signOut(auth)
     dispatch(logoutUser())
   }
 
@@ -86,17 +86,21 @@ export default function ProfileCard () {
       <ProfileNameWrapper>
         <Picture
           style={
-            userData?.data.photoURL
+            userData?.data.photoURL !== undefined
               ? { backgroundImage: `url(${userData?.data.photoURL})` }
               : {}
           }
         />
-        <Name>{(userData != null) ? userData?.data.displayName : 'DisplayName'}</Name>
-        <Username>@{(userData != null) ? userData?.data.username : 'username'}</Username>
+        <Name>
+          {userData != null ? userData?.data.displayName : 'DisplayName'}
+        </Name>
+        <Username>
+          @{userData != null ? userData?.data.username : 'username'}
+        </Username>
       </ProfileNameWrapper>
       <StyledLink to="settings">Settings</StyledLink>
       <StyledLink to="profile">Profile</StyledLink>
-      <StyledButton onClick={handleClick}>Log out</StyledButton>
+      <StyledButton onClick={() => handleClick}>Log out</StyledButton>
     </Container>
   )
 }

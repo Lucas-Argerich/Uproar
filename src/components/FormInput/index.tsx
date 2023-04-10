@@ -40,13 +40,13 @@ const Input = styled.input`
   }
 `
 
-export default function FormInput ({
+export default function FormInput({
   handleChange,
   name,
   placeholder,
   type,
   value
-}: IFormInput) {
+}: IFormInput): JSX.Element {
   return (
     <Wrapper>
       <Span>{name}</Span>

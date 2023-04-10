@@ -18,7 +18,7 @@ const StyledLink = styled(Link)`
   width: 100%;
 `
 
-export default function CancelLink ({ to, children }: ICancelLink) {
+export default function CancelLink({ to, children }: ICancelLink): JSX.Element {
   return (
     <StyledLink to={to}>
       <ArrowLeft />

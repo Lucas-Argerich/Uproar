@@ -1,7 +1,6 @@
-import { type IconType } from '../../../utils/types'
-export default function DiscoveryIcon (props: IconType) {
-  return props.isSelected
-    ? (
+import { type NavIconType } from '../../../utils/types'
+export default function DiscoveryIcon(props: NavIconType): JSX.Element {
+  return props.isSelected ? (
     <svg width={32} height={33} xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="m25.493 20.421.427.867c.213.427.76.827 1.213.907l.574.093c1.746.293 2.146 1.573.906 2.827l-.533.533c-.36.36-.547 1.053-.44 1.56l.067.32c.48 2.107-.64 2.92-2.467 1.813l-.387-.24c-.466-.28-1.24-.28-1.706 0l-.387.24c-1.84 1.107-2.947.294-2.467-1.813l.067-.32c.107-.493-.08-1.2-.44-1.56l-.533-.533c-1.24-1.267-.84-2.534.906-2.827l.574-.093c.466-.08 1-.48 1.213-.907l.427-.867c.826-1.666 2.16-1.666 2.986 0Z"
@@ -12,8 +11,7 @@ export default function DiscoveryIcon (props: IconType) {
         fill="var(--color-light)"
       />
     </svg>
-      )
-    : (
+  ) : (
     <svg width={32} height={33} xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M29.333 17.833V12.5c0-6.667-2.666-9.333-9.333-9.333h-8c-6.667 0-9.333 2.666-9.333 9.333v8c0 6.667 2.666 9.333 9.333 9.333h5.333"
@@ -32,5 +30,5 @@ export default function DiscoveryIcon (props: IconType) {
         strokeWidth={1.5}
       />
     </svg>
-      )
+  )
 }

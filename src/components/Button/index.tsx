@@ -6,7 +6,7 @@ interface IButton {
   disabled?: boolean
   onClick: (e: MouseEvent) => void
   secondary?: boolean
-};
+}
 
 const StyledButton = styled.button<{ secondary?: boolean }>`
   align-items: center;
@@ -17,10 +17,10 @@ const StyledButton = styled.button<{ secondary?: boolean }>`
   gap: 10px;
   justify-content: space-evenly;
   width: 100%;
-  
+
   ${({ secondary }) =>
-    !secondary
-    ? css`
+    secondary === false
+      ? css`
            {
             background-color: var(--color-primary);
             border-radius: 5px;
@@ -39,9 +39,20 @@ const StyledButton = styled.button<{ secondary?: boolean }>`
         `}
 `
 
-export default function Button ({ children, disabled, onClick, secondary }: IButton) {
+export default function Button({
+  children,
+  disabled,
+  onClick,
+  secondary
+}: IButton): JSX.Element {
   return (
-    <StyledButton disabled={disabled} secondary={secondary} onClick={(e) => { onClick(e) }}>
+    <StyledButton
+      disabled={disabled}
+      secondary={secondary}
+      onClick={(e) => {
+        onClick(e)
+      }}
+    >
       {children}
     </StyledButton>
   )
