@@ -17,6 +17,7 @@ import Button from '../Button'
 import FormInput from '../FormInput'
 import FormTextArea from '../FormTextArea'
 import { auth } from '../../firebase/auth'
+import { regexValidateDisplayName } from '../../utils/utils'
 
 const Form = styled.form`
   align-items: center;
@@ -69,6 +70,7 @@ export default function RegisterForm(): JSX.Element {
   const handleRegister = (e: MouseEvent) => async (): Promise<void> => {
     e.preventDefault()
     if (!isUsernameAllowed) throw Error('Username not available.')
+    if (!regexValidateDisplayName(name)) throw Error('Sorry, the display name you entered is invalid. Display names must be between 3 and 25 characters long and can only contain letters, numbers, underscores, hyphens, and spaces.')
     const timestamp = new Date()
     await addDoc(collection(db, 'users'), {
       banner: '',
