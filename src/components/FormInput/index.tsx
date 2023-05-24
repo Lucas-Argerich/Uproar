@@ -7,12 +7,15 @@ interface IFormInput {
   placeholder?: string
   type: string
   value?: string
+  error?: string
+  showError?: boolean
 }
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  position: relative;
   width: 100%;
 `
 
@@ -27,6 +30,7 @@ const Input = styled.input`
   border: 2px solid var(--color-primary);
   color: var(--color-light);
   font-size: 1rem;
+  margin-bottom: 24px;
   outline: none;
   padding: 10px;
   width: inherit;
@@ -41,12 +45,21 @@ const Input = styled.input`
   }
 `
 
+const Error = styled.span`
+  bottom: 0;
+  color: var(--color-red);
+  font-size: 0.75rem;
+  position: absolute;
+`
+
 export default function FormInput({
   handleChange,
   name,
   placeholder,
   type,
-  value
+  value,
+  error,
+  showError
 }: IFormInput): JSX.Element {
   return (
     <Wrapper>
@@ -59,6 +72,7 @@ export default function FormInput({
         type={type}
         value={value}
       />
+      {showError === true && <Error>{error}</Error>}
     </Wrapper>
   )
 }

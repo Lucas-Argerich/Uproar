@@ -35,7 +35,7 @@ const NameUsernameContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   max-width: 300px;
-  gap: 40px;
+  gap: 16px;
   width: 100%;
 `
 
@@ -70,7 +70,11 @@ export default function RegisterForm(): JSX.Element {
   const handleRegister = (e: MouseEvent) => async (): Promise<void> => {
     e.preventDefault()
     if (!isUsernameAllowed) throw Error('Username not available.')
-    if (!regexValidateDisplayName(name)) throw Error('Sorry, the display name you entered is invalid. Display names must be between 3 and 25 characters long and can only contain letters, numbers, underscores, hyphens, and spaces.')
+    if (!regexValidateDisplayName(name)) {
+      throw Error(
+        'Sorry, the display name you entered is invalid. Display names must be between 3 and 25 characters long and can only contain letters, numbers, underscores, hyphens, and spaces.'
+      )
+    }
     const timestamp = new Date()
     await addDoc(collection(db, 'users'), {
       banner: '',
@@ -97,6 +101,8 @@ export default function RegisterForm(): JSX.Element {
           name="Username"
           placeholder="@username"
           type="text"
+          error="Username not available."
+          showError
         />
         <FormInput
           handleChange={(e) => {
